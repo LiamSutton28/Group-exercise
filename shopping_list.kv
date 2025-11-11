@@ -1,0 +1,13 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        id: entries_box
+        orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.2
+        Button:
+            text: "Reset"
+            on_press: app.handle_reset_button_press(self)
+        Label:
+            text: app.status_text
