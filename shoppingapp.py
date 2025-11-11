@@ -2,6 +2,7 @@ from product import Product
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
+from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
 TOTAL_PRICE = 0
@@ -12,9 +13,10 @@ class ShoppingApp(App):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.guitars = [Product("Cheese", 12.5),
-                        Product("Laptop", 912.95),
-                        Product("Plant", 4.75), ]
+        self.products = None
+        self.products = [Product("Cheese", 12.5),
+                         Product("Laptop", 912.95),
+                         Product("Plant", 4.75), ]
 
     def build(self):
         """Build the Kivy GUI."""
@@ -37,14 +39,5 @@ class ShoppingApp(App):
         instance.text = str(product)
         product.price += TOTAL_PRICE
 
-    def press_clear(self):
-        """
-        Clear any buttons that have been selected (visually) and reset status text
-        :return: None
-        """
-        # use the .children attribute to access all widgets that are "in" another widget
-        for instance in self.root.ids.entries_box.children:
-            instance.state = 'normal'
-        self.status_text = ""
 
-
+ShoppingApp().run()
